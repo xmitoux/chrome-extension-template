@@ -1,24 +1,13 @@
-# Vue 3 テンプレート
-- Vue 3用のテンプレートリポジトリです。
-- 試す場合は右上の**Use this template**から**Create a new repository**を選択し、新しくリポジトリを作ってください。
+# Vue 3 Chrome拡張開発用テンプレート
+- Vue 3でChome拡張を開発するためのテンプレートリポジトリです。
 ## 構成
-Vite + Vue 3 + TypeScript + ESLint + Prettier
+Vite + crxjs + Vue 3 + TypeScript + ESLint + Prettier
 ## クイックスタート
 ※パッケージ管理に`pnpm`を使用します。なければ[こちら](https://pnpm.io/ja/installation)からインストールしてください。
 ```
 pnpm i
 pnpm run dev
 ```
-## デプロイ
-- [Vercel](https://vercel.com/)にデプロイすることで簡単にWeb公開が可能です。
-- このリポジトリをデプロイしたページ → [https://vue3-template-psi.vercel.app/](https://vue3-template-xmitoux.vercel.app/)
-
-### 手順
-1. Vercelに登録し、GitHubアカウントを連携します。
-2. ****Overview****右上の****Add New Project****を選択します。
-3. ****Import Git Repository****内にあるこのテンプレートから作成したリポジトリを選択します。
-4. ****Build and Output Settings****の****Build Command****を`pnpm run build`、**Install Command**を`pnpm install`に設定します。
-5. **Deploy**を押せばデプロイ完了です。
 
 ## VSCode設定
 - エディタにはVSCodeを使用します。
@@ -26,6 +15,15 @@ pnpm run dev
   - Volar: Vueのコーディングに必須
   - ESLint: JS, TS用のlinter
   - Prettier: コードフォーマッタ
+
+## crxjsバグ対応
+- ビルドができないバグがある
+  - https://github.com/crxjs/chrome-extension-tools/issues/836
+- `node_modules/@crxjs/dist/index.mjs`の101行目を以下のように修正する
+  ```js
+  const asset = bundle[key] || bundle[`.vite/${key};`];
+  ```
+
 <details>
 <summary>Vite Orginal README</summary>
 
